@@ -145,4 +145,18 @@ public class LoginTest {
         String expectedUrl2 = "http://railwayb1.somee.com/Account/ChangePassword.cshtml";
         Assert.assertEquals(currentUrl2, expectedUrl2, "There was not display correct screen");
     }
+    @Test
+    public void TC8() throws InterruptedException {
+        System.out.println("TC8 - User can't login with an account hasn't been activated");
+        HomePage homePage = new HomePage();
+        homePage.open();
+        LoginPage loginPage = homePage.gotoLoginPage();
+        loginPage.login(Constant.USERNAMETC1,Constant.PASSWORDTC1);
+        Thread.sleep(2000);
+        String actualMsg = loginPage.getErrorMsg();
+        String expectedMsg = "Invalid username or password. Please try again.";
+        // so sanh
+        Assert.assertEquals(actualMsg, expectedMsg, "errors exist in your form.");
+
+    }
 }

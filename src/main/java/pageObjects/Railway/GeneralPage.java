@@ -17,6 +17,7 @@ public class GeneralPage {
     private final By tabChangePassword = By.xpath("/html/body/div[1]/div[1]/div[2]/ul/li[8]/a");
     private final By tabRegister = By.xpath("/html/body/div[1]/div[1]/div[2]/ul/li[7]/a");
     private final By registerSuccess = By.xpath("/html/body/div[1]/div[2]/p");
+    private final By tabTimeTable = By.xpath("/html/body/div[1]/div[1]/div[2]/ul/li[4]/a");
 
     // Elements
     // Các phương thức dưa trên trình duyệt để tìm element thông qua Xpath
@@ -44,6 +45,9 @@ public class GeneralPage {
     protected WebElement getRegister() {
         return Constant.WEBDRIVER.findElement(tabRegister);
     }
+    protected WebElement getTabTimeTable() {
+        return Constant.WEBDRIVER.findElement(tabTimeTable);
+    }
     // Methods
     // sau khi lấy dudocj wphaanf tử thì trả  về text đó
     public String getWelcomeMessage() {
@@ -57,8 +61,9 @@ public class GeneralPage {
         this.getTabLogin().click();
         return new LoginPage();
     }
-    public void gotoBookTicketPage() {
+    public BookTicketPage gotoBookTicketPage() {
         this.getBookTicket().click();
+        return new BookTicketPage();
     }
     public MyTicketPage gotoMyTicketPage() {
         this.getMyTicket().click();
@@ -72,5 +77,8 @@ public class GeneralPage {
         this.getRegister().click();
         return new RegisterPage();
     }
-
+    public TimeTablePage gotoTimeTable() {
+        this.getTabTimeTable().click();
+        return new TimeTablePage();
+    }
 }
